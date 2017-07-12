@@ -1,0 +1,21 @@
+<div class="dd">
+    <button class="btn btn-xs btn-default" ng-click="dd.openDd = !dd.openDd"><span class="dd-placeholder" ng-bind="dd.placeholder"></span><span class="btn-sm glyphicon" ng-class="{'glyphicon-triangle-bottom': !dd.openDd, 'glyphicon-triangle-top': dd.openDd}"></span></button>
+    <div ng-class="{hide: !dd.openDd}" class="dd-options panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-sm btn-info" ng-click="dd.toggleAll()"><span ng-if="!dd.toggleAllBool">Check</span><span ng-if="dd.toggleAllBool">Uncheck</span> All</button>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control input-sm" ng-model="dd.filter.text" placeholder="filter">
+                </div>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item"
+                    ng-repeat="item in dd.data | filter: dd.filter.text | orderBy: '-dd.checked'" 
+                    ng-class="{'active': item.dd.checked && !item.active, 'list-group-item-{{item.active}}': item.dd.checked && item.active, 'list-group-item-{{item.inactive}}': item.inactive}"
+                    ng-click="dd.toggle(item)"><input type="checkbox" ng-checked="item.dd.checked"> {{item.name}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

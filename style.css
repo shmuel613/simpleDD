@@ -1,0 +1,23 @@
+.hide {
+    display: none;
+}
+
+.dd {
+    position: relative;
+}
+
+.dd-placeholder {
+    cursor: pointer;
+}
+
+.dd-options {
+    position: absolute;
+}
+
+.dd .list-group {
+    margin-top: 10px;
+}
+
+.dd li {
+    cursor: pointer;
+}
