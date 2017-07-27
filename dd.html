@@ -1,5 +1,7 @@
 <div class="dd">
-    <button class="btn btn-xs btn-default" ng-click="dd.openDd = !dd.openDd"><span class="dd-placeholder" ng-bind="dd.placeholder"></span><span class="btn-sm glyphicon" ng-class="{'glyphicon-triangle-bottom': !dd.openDd, 'glyphicon-triangle-top': dd.openDd}"></span></button>
+    <button class="btn btn-xs btn-default" ng-click="dd.openDd = !dd.openDd">
+        <span class="dd-placeholder" ng-bind="dd.placeholder"></span><span class="btn-sm glyphicon" ng-class="{'glyphicon-triangle-bottom': !dd.openDd, 'glyphicon-triangle-top': dd.openDd}"></span>
+    </button>
     <div ng-class="{hide: !dd.openDd}" class="dd-options panel panel-default">
         <div class="panel-body">
             <div class="row">
@@ -12,9 +14,14 @@
             </div>
             <ul class="list-group">
                 <li class="list-group-item"
-                    ng-repeat="item in dd.data | filter: dd.filter.text | orderBy: '-dd.checked'" 
+                    ng-repeat="item in dd.data | filter: dd.filter.text | orderBy: '-dd.checked' as itemList" 
                     ng-class="{'active': item.dd.checked && !item.active, 'list-group-item-{{item.active}}': item.dd.checked && item.active, 'list-group-item-{{item.inactive}}': item.inactive}"
-                    ng-click="dd.toggle(item)"><input type="checkbox" ng-checked="item.dd.checked"> {{item.name}}</li>
+                    ng-click="dd.toggle(item)">
+                    <input type="checkbox" ng-checked="item.dd.checked"> {{item.name}}
+                </li>
+                <li class="list-group-item" ng-if="itemList.length == 0" class="disabled" disabled="disabled">
+                    There are no results to choose from
+                </li>
             </ul>
         </div>
     </div>

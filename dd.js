@@ -23,12 +23,13 @@ function DdCtrl() {
     
     function init() {
         originalPlaceholder = self.placeholder;
-
-        self.data.forEach(function(item) {
-            item.dd = {
-                checked: false
-            };
-        });
+        if(self.data.length) {
+            self.data.forEach(function(item) {
+                item.dd = {
+                    checked: false
+                };
+            });
+        }
     }
     init();
 
